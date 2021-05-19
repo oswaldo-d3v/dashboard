@@ -34,4 +34,22 @@ public class MapperDecano {
         }
         return out;
     }
+
+    public ArrayList<String> getFacultadesResponsable(int id) {
+        ArrayList<String> out = new ArrayList<String>();
+        String sp = "GET_FACULTADES_ACARGO";
+        try {
+            runStorageProcedure = cn.prepareCall("{CALL " + sp + "(?)}");
+            runStorageProcedure.setInt(1, id);
+            ResultSet datos = runStorageProcedure.executeQuery();
+            while (datos.next()) {
+                out.add(datos.getString(1));
+            }
+            datos.close();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            throw new RuntimeException("Imposible ejecutar el " + sp + ".");
+        }
+        return out;
+    }
 }

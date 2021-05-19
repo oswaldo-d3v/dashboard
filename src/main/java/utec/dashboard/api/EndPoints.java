@@ -38,6 +38,10 @@ public class EndPoints {
         get("/encargadoarea/:area", (request, response) -> {
             return serviciosArea.getArea(request, response);
         });
+
+        get("/areas/acargo/:idUsuario", (request, response) -> {
+            return serviciosArea.getAreasResponsable(request, response);
+        });
     }
 
     public void serviciosDirector() {
@@ -46,6 +50,10 @@ public class EndPoints {
         get("/director/:escuela", (request, response) -> {
             return serviciosDirector.getEscuela(request, response);
         });
+
+        get("/escuelas/acargo/:idUsuario", (request, response) -> {
+            return serviciosDirector.getEscuelasResponsable(request, response);
+        });
     }
 
     public void serviciosDecano() {
@@ -53,6 +61,10 @@ public class EndPoints {
 
         get("/decano/:facultad", (request, response) -> {
             return serviciosDecano.getFacultad(request, response);
+        });
+
+        get("/facultades/acargo/:idUsuario", (request, response) -> {
+            return serviciosDecano.getFacultadesResponsable(request, response);
         });
     }
 
